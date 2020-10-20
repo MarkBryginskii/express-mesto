@@ -1,6 +1,6 @@
 {
   "name": "express-mesto",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "author": "Mark Bryginskii",
   "license": "ISC",
   "private": true,
@@ -19,15 +19,6 @@
     "url": "https://github.com/MarkBryginskii/express-mesto/issues"
   },
   "homepage": "https://github.com/MarkBryginskii/express-mesto#readme",
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "express": "^4.17.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
-  },
   "devDependencies": {
     "eslint": "^7.11.0",
     "eslint-config-airbnb": "^18.2.0",
@@ -37,20 +28,5 @@
     "eslint-plugin-react": "^7.21.4",
     "eslint-plugin-react-hooks": "^4.1.2",
     "nodemon": "^2.0.5"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   }
 }

@@ -5,7 +5,11 @@ const users = path.join(__dirname, '..', 'data', 'users.json');
 
 router.get('/users', (req, res) => {
   readFile(users)
-    .then((data) => res.send(data));
+    .then((data) => res.send(data))
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send({ message: 'Ошибка на сервере' });
+    })
 });
 
 router.get('/users/:id', (req, res) => {
@@ -19,6 +23,10 @@ router.get('/users/:id', (req, res) => {
         return res.status(404).send({"message": "Нет пользователя с таким id"});
       }
       res.send(user);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send({ message: 'Ошибка на сервере' });
     })
 });
 
