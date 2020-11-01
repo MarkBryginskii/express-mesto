@@ -1,3 +1,5 @@
+const { off } = require("./models/user");
+
 module.exports = {
   env: {
     browser: true,
@@ -8,5 +10,7 @@ module.exports = {
   rules: {
     'no-console': 'off',
     'no-underscore-dangle': ['error', { allow: ['_id'] }],
+    'eslint-disable-next-line': off,
+    'consistent-return': off,
   },
 };

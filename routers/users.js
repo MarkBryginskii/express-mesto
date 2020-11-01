@@ -1,33 +1,36 @@
 const router = require('express').Router();
-const readFile = require('../utils/read-file.js');
-const path = require('path');
-const users = path.join(__dirname, '..', 'data', 'users.json');
+const User = require('../models/user.js');
 
 router.get('/users', (req, res) => {
-  readFile(users)
+  User.find({})
     .then((data) => res.send(data))
     .catch((err) => {
-      console.error(err);
+      console.error(err.message);
       res.status(500).send({ message: 'Ошибка на сервере' });
-    })
+    });
 });
 
 router.get('/users/:id', (req, res) => {
-  readFile(users)
-    .then((data) => {
-      const userFound = data.find(user => user._id === req.params.id);
-      return userFound
-    })
-    .then(user => {
-      if(!user) {
-        return res.status(404).send({"message": "Нет пользователя с таким id"});
+  User.findOne({ id: req.params._id})
+    .then((user) => {
+      if (!user) {
+        return res.status(404).send({ message: 'Нет пользователя с таким id' });
       }
       res.send(user);
     })
     .catch((err) => {
-      console.error(err);
-      res.status(500).send({ message: 'Ошибка на сервере' });
-    })
+      console.error(err.message);
+      res.status(400).send({ message: 'Ошибка на сервере' });
+    });
+});
+
+router.post('/users', (req, res) => {
+  User.create({ ...req.body })
+  .then((user) => {res.status(200).send(user)})
+  .catch((err) => {
+    console.error(err.message);
+    res.status(400).send({ message: `Ошибка создание пользователя - ${err.message}` });
+  });
 });
 
 module.exports = router;
