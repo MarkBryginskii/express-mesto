@@ -7,7 +7,7 @@ module.exports = {
   extends: 'airbnb-base',
   rules: {
     'no-underscore-dangle': ['error', { allow: ['_id'] }],
-    'eslint-disable-next-line': off,
-    'consistent-return': off,
+    'eslint-disable-next-line': 'off',
+    'consistent-return': 'off',
   },
 };
